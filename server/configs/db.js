@@ -1,12 +1,45 @@
+// import mongoose from 'mongoose';
+
+// const connectDB = async () =>{
+//     try {
+//         mongoose.connection.on('connected', ()=> console.log('Database connected'));
+//         await mongoose.connect(`${process.env.MONGODB_URI}/quickshow`)
+//     } catch (error) {
+//         console.log(error.message);
+        
+//     }
+// }
+
+// export default connectDB;
+// import mongoose from 'mongoose';
+
+// const connectDB = async () => {
+//     try {
+//         console.log("Mongo URI:", process.env.MONGODB_URI)
+
+//         await mongoose.connect(process.env.MONGODB_URI)
+
+//         console.log("Database connected");
+
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
+
+// export default connectDB;
 import mongoose from 'mongoose';
 
-const connectDB = async () =>{
+const connectDB = async () => {
     try {
-        mongoose.connection.on('connected', ()=> console.log('Database connected'));
-        await mongoose.connect(`${process.env.MONGODB_URI}/quickshow`)
+
+        console.log("Mongo URI:", process.env.MONGODB_URI);
+
+        await mongoose.connect(process.env.MONGODB_URI);
+
+        console.log("Database connected");
+
     } catch (error) {
-        console.log(error.message);
-        
+        console.log(error);
     }
 }
 
