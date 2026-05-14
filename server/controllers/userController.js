@@ -25,8 +25,7 @@ export const updateFavorite = async (req, res)=>{
         const { movieId } = req.body;
         const userId = req.auth().userId;
 
-        const client = await clerkClient();
-        const user = await client.users.getUser(userId)
+        const user = await clerkClient.users.getUser(userId)
 
         if(!user.privateMetadata.favorites){
             user.privateMetadata.favorites = []
@@ -38,7 +37,7 @@ export const updateFavorite = async (req, res)=>{
             user.privateMetadata.favorites = user.privateMetadata.favorites.filter(item => item !== movieId)
         }
 
-        await client.users.updateUserMetadata(userId, {privateMetadata: user.privateMetadata})
+        await clerkClient.users.updateUserMetadata(userId, {privateMetadata: user.privateMetadata})
 
         res.json({success: true, message: "Favorite movies updated" })
     } catch (error) {
